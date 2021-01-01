@@ -34,7 +34,7 @@ namespace Extend.Switcher.Action.Editor {
 	}
 
 	public class GOActiveSwitcherActionDrawer : ActionDrawer {
-		private static readonly GUIContent m_gameObjectTitle = new GUIContent("GameObject");
+		private static readonly GUIContent m_gameObjectTitle = new GUIContent("Game Object Active");
 		public override void OnEditorGUI(Rect rect, SerializedProperty property) {
 			var goProp = property.FindPropertyRelative("GO");
 			rect.xMax -= 20;

@@ -16,6 +16,10 @@ namespace Extend.Switcher {
 					action.ActiveSwitcher();
 				}
 			}
+
+			public override string ToString() {
+				return StateName;
+			}
 		}
 
 		public State[] States;

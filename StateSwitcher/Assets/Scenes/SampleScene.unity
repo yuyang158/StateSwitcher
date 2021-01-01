@@ -263,7 +263,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -304,29 +304,28 @@ MonoBehaviour:
     SwitcherActions:
     - id: 0
     - id: 1
+  - StateName: tttt
+    SwitcherActions:
     - id: 2
+  - StateName: aaaaa
+    SwitcherActions: []
   references:
     version: 1
     00000000:
       type: {class: GOActiveSwitcherAction, ns: Extend.Switcher.Action, asm: Assembly-CSharp}
       data:
         GO: {fileID: 1885241605}
-        Active: 1
+        Active: 0
     00000001:
       type: {class: TextAssignSwitcherAction, ns: Extend.Switcher.Action, asm: Assembly-CSharp}
       data:
         m_textGUI: {fileID: 1885241607}
         m_text: aaaaaa
     00000002:
-      type: {class: AnimatorSwitcherAction, ns: Extend.Switcher.Action, asm: Assembly-CSharp}
+      type: {class: TextAssignSwitcherAction, ns: Extend.Switcher.Action, asm: Assembly-CSharp}
       data:
-        Processor:
-          ani: {fileID: 1885241609}
-          m_paramValue:
-            NameHash: -2097055190
-            fV: 0
-            iV: 0
-            bV: 0
+        m_textGUI: {fileID: 1885241607}
+        m_text: 22222222222
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0
