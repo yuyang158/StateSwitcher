@@ -12,12 +12,12 @@ namespace Extend.Common {
 			public bool bV;
 		}
 		
-		[SerializeField, HideInInspector]
-		private Animator ani;
+		[SerializeField]
+		private Animator m_ani;
 
-		public Animator Ani => ani;
+		public Animator Ani => m_ani;
 
-		[SerializeField, HideInInspector]
+		[SerializeField]
 		private AnimatorParameterValue m_paramValue;
 
 		public AnimatorParameterValue ParameterValue => m_paramValue;

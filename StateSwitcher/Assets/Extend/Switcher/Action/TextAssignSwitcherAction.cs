@@ -1,8 +1,9 @@
-﻿using Extend.Common;
+﻿using System;
 using TMPro;
 using UnityEngine;
 
 namespace Extend.Switcher.Action {
+	[Serializable]
 	public class TextAssignSwitcherAction : ISwitcherAction {
 		[SerializeField]
 		private TextMeshProUGUI m_textGUI;

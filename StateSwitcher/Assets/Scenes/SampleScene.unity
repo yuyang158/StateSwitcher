@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 408936912}
   - component: {fileID: 408936911}
   - component: {fileID: 408936915}
+  - component: {fileID: 408936916}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -263,7 +264,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -308,14 +309,15 @@ MonoBehaviour:
     SwitcherActions:
     - id: 2
   - StateName: aaaaa
-    SwitcherActions: []
+    SwitcherActions:
+    - id: 3
   references:
     version: 1
     00000000:
       type: {class: GOActiveSwitcherAction, ns: Extend.Switcher.Action, asm: Assembly-CSharp}
       data:
-        GO: {fileID: 1885241605}
-        Active: 0
+        m_go: {fileID: 0}
+        m_active: 0
     00000001:
       type: {class: TextAssignSwitcherAction, ns: Extend.Switcher.Action, asm: Assembly-CSharp}
       data:
@@ -326,6 +328,35 @@ MonoBehaviour:
       data:
         m_textGUI: {fileID: 1885241607}
         m_text: 22222222222
+    00000003:
+      type: {class: AnimatorSwitcherAction, ns: Extend.Switcher.Action, asm: Assembly-CSharp}
+      data:
+        m_processor:
+          m_ani: {fileID: 408936916}
+          m_paramValue:
+            NameHash: -2097055190
+            fV: 4.69
+            iV: 16
+            bV: 1
+--- !u!95 &408936916
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408936910}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1f549d6cb4bb3a44896a13d37a14080d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,7 +524,6 @@ GameObject:
   - component: {fileID: 1885241606}
   - component: {fileID: 1885241608}
   - component: {fileID: 1885241607}
-  - component: {fileID: 1885241609}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -616,25 +646,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1885241605}
   m_CullTransparentMesh: 0
---- !u!95 &1885241609
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1885241605}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1f549d6cb4bb3a44896a13d37a14080d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2138677391
 GameObject:
   m_ObjectHideFlags: 0

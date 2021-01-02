@@ -23,12 +23,12 @@ namespace Extend.Switcher.Action.Editor {
 
 	public class AnimatorSwitcherActionDrawer : ActionDrawer {
 		public override void OnEditorGUI(Rect rect, SerializedProperty property) {
-			var processorProperty = property.FindPropertyRelative("Processor");
+			var processorProperty = property.FindPropertyRelative("m_processor");
 			EditorGUI.PropertyField(rect, processorProperty);
 		}
 
 		public override float GetEditorHeight(SerializedProperty property) {
-			var processorProperty = property.FindPropertyRelative("Processor");
+			var processorProperty = property.FindPropertyRelative("m_processor");
 			return EditorGUI.GetPropertyHeight(processorProperty);
 		}
 	}
@@ -36,12 +36,12 @@ namespace Extend.Switcher.Action.Editor {
 	public class GOActiveSwitcherActionDrawer : ActionDrawer {
 		private static readonly GUIContent m_gameObjectTitle = new GUIContent("Game Object Active");
 		public override void OnEditorGUI(Rect rect, SerializedProperty property) {
-			var goProp = property.FindPropertyRelative("GO");
+			var goProp = property.FindPropertyRelative("m_go");
 			rect.xMax -= 20;
 			rect.height = EditorGUIUtility.singleLineHeight;
 			EditorGUI.PropertyField(rect, goProp, m_gameObjectTitle);
 
-			var activeProp = property.FindPropertyRelative("Active");
+			var activeProp = property.FindPropertyRelative("m_active");
 			var toggleRect = rect;
 			toggleRect.xMin = rect.xMax + 7.5f;
 			toggleRect.xMax += 20;
