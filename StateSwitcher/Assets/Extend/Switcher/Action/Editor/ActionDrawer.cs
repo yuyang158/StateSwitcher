@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Extend.Common.Editor;
 using UnityEditor;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ namespace Extend.Switcher.Action.Editor {
 			m_drawers.Add(typeof(AnimatorSwitcherAction), new AnimatorSwitcherActionDrawer());
 			m_drawers.Add(typeof(GOActiveSwitcherAction), new GOActiveSwitcherActionDrawer());
 			m_drawers.Add(typeof(TextAssignSwitcherAction), new TextAssignSwitcherActionDrawer());
+			m_drawers.Add(typeof(GraphicMaterialSwitcherAction), new GraphicMaterialSwitcherActionDrawer());
+			m_drawers.Add(typeof(ImageSwitcherAction), new ImageSwitcherActionDrawer());
 		}
 
 		public static ActionDrawer GetDrawer(Type type) {
@@ -49,7 +52,7 @@ namespace Extend.Switcher.Action.Editor {
 		}
 
 		public override float GetEditorHeight(SerializedProperty property) {
-			return Common.Editor.UIEditorUtil.LINE_HEIGHT;
+			return UIEditorUtil.LINE_HEIGHT;
 		}
 	}
 
@@ -59,14 +62,44 @@ namespace Extend.Switcher.Action.Editor {
 			var textGUIProperty = property.FindPropertyRelative("m_textGUI");
 			EditorGUI.PropertyField(rect, textGUIProperty);
 
-			rect.y += Common.Editor.UIEditorUtil.LINE_HEIGHT;
+			rect.y += UIEditorUtil.LINE_HEIGHT;
 			var textProp = property.FindPropertyRelative("m_text");
-			rect.height = Common.Editor.UIEditorUtil.LINE_HEIGHT * 3 - EditorGUIUtility.standardVerticalSpacing;
+			rect.height = UIEditorUtil.LINE_HEIGHT * 3 - EditorGUIUtility.standardVerticalSpacing;
 			textProp.stringValue = EditorGUI.TextField(rect, textProp.stringValue);
 		}
 
 		public override float GetEditorHeight(SerializedProperty property) {
-			return Common.Editor.UIEditorUtil.LINE_HEIGHT * 4;
+			return UIEditorUtil.LINE_HEIGHT * 4;
+		}
+	}
+
+	public class GraphicMaterialSwitcherActionDrawer : ActionDrawer {
+		public override void OnEditorGUI(Rect rect, SerializedProperty property) {
+			rect.height = EditorGUIUtility.singleLineHeight;
+			var graphicProp = property.FindPropertyRelative("m_graphic");
+			EditorGUI.PropertyField(rect, graphicProp);
+			rect.y += UIEditorUtil.LINE_HEIGHT;
+			var materialProp = property.FindPropertyRelative("m_material");
+			EditorGUI.PropertyField(rect, materialProp);
+		}
+
+		public override float GetEditorHeight(SerializedProperty property) {
+			return UIEditorUtil.LINE_HEIGHT * 2;
+		}
+	}
+
+	public class ImageSwitcherActionDrawer : ActionDrawer {
+		public override void OnEditorGUI(Rect rect, SerializedProperty property) {
+			rect.height = EditorGUIUtility.singleLineHeight;
+			var imgProp = property.FindPropertyRelative("m_image");
+			EditorGUI.PropertyField(rect, imgProp);
+			rect.y += UIEditorUtil.LINE_HEIGHT;
+			var spriteProp = property.FindPropertyRelative("m_sprite");
+			EditorGUI.PropertyField(rect, spriteProp);
+		}
+
+		public override float GetEditorHeight(SerializedProperty property) {
+			return UIEditorUtil.LINE_HEIGHT * 2;
 		}
 	}
 }

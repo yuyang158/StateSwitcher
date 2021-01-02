@@ -23,8 +23,7 @@ namespace Extend.Common.Editor {
 
 			var valueProp = property.FindPropertyRelative("m_paramValue");
 			var nameHashProp = valueProp.FindPropertyRelative("NameHash");
-			for( int i = 0; i < controller.parameters.Length; i++ ) {
-				var param = controller.parameters[i];
+			foreach( var param in controller.parameters ) {
 				if( param.nameHash == nameHashProp.intValue ) {
 					switch( param.type ) {
 						case AnimatorControllerParameterType.Float:
