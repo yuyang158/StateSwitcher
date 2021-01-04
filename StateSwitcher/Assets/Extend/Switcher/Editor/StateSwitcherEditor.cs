@@ -91,16 +91,34 @@ namespace Extend.Switcher.Editor {
 					menu.ShowAsContext();
 				},
 				elementHeightCallback = index => {
-					var elementAtIndex = switcherActionsProp.GetArrayElementAtIndex(index);
-					var switcher = elementAtIndex.GetPropertyObject() as ISwitcherAction;
+					var elementPropAtIndex = switcherActionsProp.GetArrayElementAtIndex(index);
+					var switcher = elementPropAtIndex.GetPropertyObject() as ISwitcherAction;
 					var drawer = ActionDrawer.GetDrawer(switcher.GetType());
-					return drawer.GetEditorHeight(elementAtIndex);
+					var foldProp = elementPropAtIndex.FindPropertyRelative("m_fold");
+					if( !foldProp.boolValue ) {
+						return UIEditorUtil.LINE_HEIGHT;
+					}
+
+					return drawer.GetEditorHeight(elementPropAtIndex) + UIEditorUtil.LINE_HEIGHT;
 				},
 				drawElementCallback = (rect, index, active, focused) => {
-					var elementAtIndex = switcherActionsProp.GetArrayElementAtIndex(index);
-					var switcher = elementAtIndex.GetPropertyObject() as ISwitcherAction;
+					var elementPropAtIndex = switcherActionsProp.GetArrayElementAtIndex(index);
+					var switcher = elementPropAtIndex.GetPropertyObject() as ISwitcherAction;
 					var drawer = ActionDrawer.GetDrawer(switcher.GetType());
-					drawer.OnEditorGUI(rect, elementAtIndex);
+					var foldProp = elementPropAtIndex.FindPropertyRelative("m_fold");
+					rect.height = EditorGUIUtility.singleLineHeight;
+					var foldRect = rect;
+					foldRect.x += 10;
+					var name = ObjectNames.NicifyVariableName(switcher.GetType().Name);
+					foldProp.boolValue = EditorGUI.Foldout(foldRect, foldProp.boolValue, name);
+					if( !foldProp.boolValue ) {
+						return;
+					}
+
+					rect.y += UIEditorUtil.LINE_HEIGHT;
+					EditorGUI.indentLevel += 1;
+					drawer.OnEditorGUI(rect, elementPropAtIndex);
+					EditorGUI.indentLevel -= 1;
 				},
 				drawHeaderCallback = rect => {
 					EditorGUI.LabelField(rect, "Action List");

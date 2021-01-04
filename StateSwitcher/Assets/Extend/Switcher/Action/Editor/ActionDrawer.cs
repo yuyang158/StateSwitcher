@@ -46,7 +46,7 @@ namespace Extend.Switcher.Action.Editor {
 
 			var activeProp = property.FindPropertyRelative("m_active");
 			var toggleRect = rect;
-			toggleRect.xMin = rect.xMax + 7.5f;
+			toggleRect.xMin = rect.xMax;
 			toggleRect.xMax += 20;
 			activeProp.boolValue = EditorGUI.Toggle(toggleRect, activeProp.boolValue);
 		}

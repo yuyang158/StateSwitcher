@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace Extend.Switcher.Action {
 	[Serializable]
-	public class GOActiveSwitcherAction : ISwitcherAction {
+	public class GOActiveSwitcherAction : SwitcherAction {
 		[SerializeField]
-		public GameObject m_go;
+		private GameObject m_go;
 		[SerializeField]
-		public bool m_active;
+		private bool m_active;
 		
-		public void ActiveSwitcher() {
+		public override void ActiveAction() {
 			m_go.SetActive(m_active);
 		}
 	}

@@ -13,7 +13,7 @@ namespace Extend.Switcher {
 
 			public void Switch() {
 				foreach( var action in SwitcherActions ) {
-					action.ActiveSwitcher();
+					action.ActiveAction();
 				}
 			}
 

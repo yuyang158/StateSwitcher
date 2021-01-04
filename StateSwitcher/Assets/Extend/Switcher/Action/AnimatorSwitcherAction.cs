@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Extend.Switcher.Action {
 	[Serializable]
-	public class AnimatorSwitcherAction : ISwitcherAction {
+	public class AnimatorSwitcherAction : SwitcherAction {
 		[SerializeField]
-		public AnimatorParamProcessor m_processor;
+		private AnimatorParamProcessor m_processor;
 
-		public void ActiveSwitcher() {
+		public override void ActiveAction() {
 			m_processor.Apply();
 		}
 	}

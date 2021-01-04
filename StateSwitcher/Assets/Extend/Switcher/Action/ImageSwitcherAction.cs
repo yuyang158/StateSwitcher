@@ -4,14 +4,14 @@ using UnityEngine.UI;
 
 namespace Extend.Switcher.Action {
 	[Serializable]
-	public class ImageSwitcherAction : ISwitcherAction {
+	public class ImageSwitcherAction : SwitcherAction {
 		[SerializeField]
 		private Image m_image;
 
 		[SerializeField]
 		private Sprite m_sprite;
 		
-		public void ActiveSwitcher() {
+		public override void ActiveAction() {
 			m_image.sprite = m_sprite;
 		}
 	}
